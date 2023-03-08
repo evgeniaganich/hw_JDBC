@@ -3,11 +3,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EmployeeDAOImpl implements EmployeeDAO{
+
+
     @Override
     public void add(Employee employee) {
-        try(final Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/skypro", "postgres", "darkmatter0512")) {
-            PreparedStatement statement = connection.prepareStatement(
-                    "INSERT INTO employee (id, first_name, last_name, gender, age, city_id) VALUES ((?), (?), (?), (?), (?), (?))");
+        try(PreparedStatement statement = ConnectionUtils.getConnection().prepareStatement(
+                    "INSERT INTO employee (id, first_name, last_name, gender, age, city_id) VALUES ((?), (?), (?), (?), (?), (?))")) {
             statement.setInt(1, employee.getId());
             statement.setString(2, employee.getFirstName());
             statement.setString(3, employee.getLastName());
@@ -24,9 +25,8 @@ public class EmployeeDAOImpl implements EmployeeDAO{
     @Override
     public Employee getById(int id) {
     Employee employee = new Employee();
-        try(final Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/skypro", "postgres", "darkmatter0512")) {
-            PreparedStatement statement = connection.prepareStatement(
-                    "SELECT * FROM employee INNER JOIN city ON employee.city_id=city.city_id WHERE id = (?)");
+        try(PreparedStatement statement = ConnectionUtils.getConnection().prepareStatement(
+                    "SELECT * FROM employee INNER JOIN city ON employee.city_id=city.city_id WHERE id = (?)")) {
             statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
             while(resultSet.next()) {
@@ -47,9 +47,8 @@ public class EmployeeDAOImpl implements EmployeeDAO{
     @Override
     public List<Employee> readAll() {
         List<Employee> employeeList = new ArrayList<>();
-        try(final Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/skypro", "postgres", "darkmatter0512")) {
-            PreparedStatement statement = connection.prepareStatement(
-                    "SELECT * FROM employee INNER JOIN city ON employee.city_id=city.city_id");
+        try(PreparedStatement statement = ConnectionUtils.getConnection().prepareStatement(
+                    "SELECT * FROM employee INNER JOIN city ON employee.city_id=city.city_id")) {
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 int id = Integer.parseInt(resultSet.getString("id"));
@@ -71,9 +70,8 @@ public class EmployeeDAOImpl implements EmployeeDAO{
     @Override
     public void updateEmployeeById(int id) {
         Employee employee = new Employee();
-        try(final Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/skypro", "postgres", "darkmatter0512")) {
-            PreparedStatement statement = connection.prepareStatement(
-                    "UPDATE employee WHERE id = (?)");
+        try(PreparedStatement statement = ConnectionUtils.getConnection().prepareStatement(
+                    "UPDATE employee WHERE id = (?)")) {
             statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
             while(resultSet.next()) {
@@ -89,14 +87,14 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 
     @Override
     public void deleteById(int id) {
-        try(final Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/skypro", "postgres", "darkmatter0512")) {
-            PreparedStatement statement = connection.prepareStatement(
-            "DELETE FROM employee WHERE id=(?)");
+        try(PreparedStatement statement = ConnectionUtils.getConnection().prepareStatement(
+            "DELETE FROM employee WHERE id=(?)")) {
                 statement.setInt(1, id);
                 statement.executeUpdate();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
+
     }
 

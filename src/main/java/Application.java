@@ -6,7 +6,7 @@ public class Application {
 
     public static void main(String[] args) throws SQLException {
 
-        try(final Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/skypro", "postgres", "darkmatter0512")) {
+        try(final Connection connection = DriverManager.getConnection(ConnectionUtils.URL, ConnectionUtils.USER, ConnectionUtils.PASSWORD)) {
             PreparedStatement statement = connection.prepareStatement("SELECT * FROM employee FULL OUTER JOIN city " +
                     "ON employee.city_id = city.city_id WHERE id = (?)");
             statement.setInt(1, 1);
