@@ -6,40 +6,28 @@ public class Application {
 
     public static void main(String[] args) throws SQLException {
 
-        try(final Connection connection = DriverManager.getConnection(ConnectionUtils.URL, ConnectionUtils.USER, ConnectionUtils.PASSWORD)) {
-            PreparedStatement statement = connection.prepareStatement("SELECT * FROM employee FULL OUTER JOIN city " +
-                    "ON employee.city_id = city.city_id WHERE id = (?)");
-            statement.setInt(1, 1);
-            final ResultSet resultSet = statement.executeQuery();
-            while (resultSet.next()) {
+        EmployeeDAO employeeDAO = new EmployeeDAOImpl();
+        Employee tatiana = new Employee("Tatiana", "Larina", "female", 18, 2);
+        employeeDAO.add(tatiana);
 
-                String firstName = "Имя: " + resultSet.getString("first_name");
-                String lastName = "Фамилия: " + resultSet.getString("last_name");
-                String gender = "Пол: " + resultSet.getString("gender");
-                String age = "Возраст: " + resultSet.getInt("age");
-                String city = "Город: " + resultSet.getString("city_name");
+        System.out.println(employeeDAO.getById(1));
 
-                System.out.println(firstName);
-                System.out.println(lastName);
-                System.out.println(gender);
-                System.out.println(age);
-                System.out.println(city);
+        Employee maria = new Employee(1, "Maria", "Kozlova", "female", 27, 1);
+        employeeDAO.updateEmployee(maria);
 
-                EmployeeDAO employeeDAO = new EmployeeDAOImpl();
-//                Employee anna = new Employee("Anna", "Karenina", "female", 28, 2);
-//                employeeDAO.add(anna);
-                List<Employee> list = employeeDAO.readAll();
-//                employeeDAO.deleteById(9);
-//                employeeDAO.deleteById(0);
-                for (Employee employee: list) {
-                    System.out.println(employee);
-                }
-            }
+        List<Employee> list = employeeDAO.readAll();
+
+        for (Employee employee : list) {
+            System.out.println(employee);
         }
+        employeeDAO.deleteEmployee(tatiana);
 
-
+        for (Employee employee : list) {
+            System.out.println(employee);
         }
     }
+}
+
 
 
 
