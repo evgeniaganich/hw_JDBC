@@ -30,26 +30,26 @@ public class Application {
 
         List<Employee> employeesFromDubai = List.of(tatiana);
         City dubai = new City("Dubai", employeesFromDubai);
-        cityDao.add(dubai);
+//        cityDao.add(dubai);
 
         List<City> cityList = cityDao.readAll();
 
-        for (City city: cityList) {
+        for (City city : cityList) {
             System.out.println(city);
         }
         cityDao.getById(1);
 
-        City uryupinsk = new City(7, "Uryupinsk");
+        City uryupinsk = new City(dubai.getCity_id(), "Uryupinsk");
 
         cityDao.updateCity(uryupinsk);
 
-        for (City city: cityList) {
+        for (City city : cityList) {
             System.out.println(city);
         }
 
-        cityDao.deleteCity(uryupinsk);
-        for (City city: cityList) {
-          System.out.println(city);}
+//        cityDao.deleteCity(uryupinsk);
+//        for (City city: cityList) {
+//          System.out.println(city);}
 
 
     }

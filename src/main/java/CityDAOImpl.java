@@ -6,11 +6,12 @@ import java.util.List;
 public class CityDAOImpl implements CityDao {
 
     @Override
-    public void add(City city) {
+    public City add(City city) {
         try(Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();) {
             Transaction transaction = session.beginTransaction();
             session.save(city);
             transaction.commit();
+            return city;
         }
     }
 
@@ -43,4 +44,5 @@ public class CityDAOImpl implements CityDao {
             transaction.commit();
         }
     }
+
 }

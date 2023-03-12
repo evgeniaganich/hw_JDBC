@@ -36,6 +36,10 @@ public class City {
     public City() {
     }
 
+    public City(String city_name) {
+        this.city_name = city_name;
+    }
+
     public int getCity_id() {
         return city_id;
     }
