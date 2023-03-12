@@ -25,6 +25,8 @@ public class Employee {
     @Column(name = "city_id")
     private int cityId;
 
+    @ManyToOne
+    private City city;
     public Employee() {
     }
 
@@ -43,6 +45,14 @@ public class Employee {
         this.gender = gender;
         this.age = age;
         this.cityId = cityId;
+    }
+
+    public Employee(String firstName, String lastName, String gender, int age, City city) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.gender = gender;
+        this.age = age;
+        this.city = city;
     }
 
     public int getId() {
@@ -94,6 +104,13 @@ public class Employee {
         this.age = age;
     }
 
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
+    }
 
     @Override
     public String toString() {

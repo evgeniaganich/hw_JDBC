@@ -8,23 +8,50 @@ public class Application {
 
         EmployeeDAO employeeDAO = new EmployeeDAOImpl();
         Employee tatiana = new Employee("Tatiana", "Larina", "female", 18, 2);
-        employeeDAO.add(tatiana);
+//        employeeDAO.add(tatiana);
+//
+//        System.out.println(employeeDAO.getById(1));
+//
+//        Employee maria = new Employee(1, "Maria", "Kozlova", "female", 27, 1);
+//        employeeDAO.updateEmployee(maria);
+//
+//        List<Employee> list = employeeDAO.readAll();
+//
+//        for (Employee employee : list) {
+//            System.out.println(employee);
+//        }
+//        employeeDAO.deleteEmployee(tatiana);
+//
+//        for (Employee employee : list) {
+//            System.out.println(employee);
+//        }
 
-        System.out.println(employeeDAO.getById(1));
+        CityDao cityDao = new CityDAOImpl();
 
-        Employee maria = new Employee(1, "Maria", "Kozlova", "female", 27, 1);
-        employeeDAO.updateEmployee(maria);
+        List<Employee> employeesFromDubai = List.of(tatiana);
+        City dubai = new City("Dubai", employeesFromDubai);
+        cityDao.add(dubai);
 
-        List<Employee> list = employeeDAO.readAll();
+        List<City> cityList = cityDao.readAll();
 
-        for (Employee employee : list) {
-            System.out.println(employee);
+        for (City city: cityList) {
+            System.out.println(city);
         }
-        employeeDAO.deleteEmployee(tatiana);
+        cityDao.getById(1);
 
-        for (Employee employee : list) {
-            System.out.println(employee);
+        City uryupinsk = new City(7, "Uryupinsk");
+
+        cityDao.updateCity(uryupinsk);
+
+        for (City city: cityList) {
+            System.out.println(city);
         }
+
+        cityDao.deleteCity(uryupinsk);
+        for (City city: cityList) {
+          System.out.println(city);}
+
+
     }
 }
 
