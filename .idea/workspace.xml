@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9c15194d-8f68-4ec1-ab77-faefa926a983" name="Changes" comment="Homework Hibernate tables done">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="9c15194d-8f68-4ec1-ab77-faefa926a983" name="Changes" comment="Homework Hibernate tables updated">
       <change beforePath="$PROJECT_DIR$/src/main/java/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/City.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/City.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CityDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CityDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CityDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CityDao.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,6 +60,7 @@
       <workItem from="1677687004924" duration="4162000" />
       <workItem from="1677694187210" duration="18694000" />
       <workItem from="1678620921687" duration="5709000" />
+      <workItem from="1678635217097" duration="494000" />
     </task>
     <task id="LOCAL-00001" summary="Homework done">
       <created>1677865647645</created>
@@ -93,7 +90,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678625998224</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Homework Hibernate tables updated">
+      <created>1678635435757</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1678635435757</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -115,6 +119,7 @@
     <MESSAGE value="Homework refactored" />
     <MESSAGE value="Homework Hibernate done" />
     <MESSAGE value="Homework Hibernate tables done" />
-    <option name="LAST_COMMIT_MESSAGE" value="Homework Hibernate tables done" />
+    <MESSAGE value="Homework Hibernate tables updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="Homework Hibernate tables updated" />
   </component>
 </project>

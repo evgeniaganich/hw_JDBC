@@ -32,6 +32,9 @@ public class Application {
         City dubai = new City("Dubai", employeesFromDubai);
 //        cityDao.add(dubai);
 
+        City perm = new City("Perm");
+        cityDao.add(perm);
+
         List<City> cityList = cityDao.readAll();
 
         for (City city : cityList) {
@@ -39,7 +42,7 @@ public class Application {
         }
         cityDao.getById(1);
 
-        City uryupinsk = new City(dubai.getCity_id(), "Uryupinsk");
+        City uryupinsk = new City(perm.getCity_id(), "Uryupinsk");
 
         cityDao.updateCity(uryupinsk);
 
